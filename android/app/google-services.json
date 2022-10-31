@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "6119895462",
+    "project_id": "job-timer-1",
+    "storage_bucket": "job-timer-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6119895462:android:7621c439f812347015df67",
+        "android_client_info": {
+          "package_name": "br.dev.luisgustavo.job_timer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6119895462-ao0r0cg22l9bifpuqigm7jjfkq5r8hle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDW4e_7cR6V-8BI0BkiZzSLzcQKrQNGwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "6119895462-ao0r0cg22l9bifpuqigm7jjfkq5r8hle.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
