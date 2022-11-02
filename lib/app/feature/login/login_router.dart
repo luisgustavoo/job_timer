@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+import 'package:job_timer/app/feature/login/controllers/login_controller.dart';
 import 'package:job_timer/app/feature/login/login_page.dart';
 
 class LoginRouter extends FlutterGetItPageRoute {
@@ -11,14 +11,16 @@ class LoginRouter extends FlutterGetItPageRoute {
   @override
   List<Bind<Object>> get bindings {
     return [
-      Bind.singleton((i) => FirebaseAuth.instance),
+      Bind.singleton((i) => LoginController(authService: i())),
     ];
   }
 
   @override
   WidgetBuilder get page {
     return (context) {
-      return const LoginPage();
+      return LoginPage(
+        controller: context.get(),
+      );
     };
   }
 }
