@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/logo.png'),
+              SvgPicture.asset('assets/images/logo.svg'),
               SizedBox(
                 height: screenSize.height * 0.1,
               ),
@@ -40,7 +41,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Image.asset('assets/images/google.png'),
+                child: SvgPicture.asset('assets/images/google.svg'),
               )
             ],
           ),
