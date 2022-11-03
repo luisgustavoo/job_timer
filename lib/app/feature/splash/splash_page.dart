@@ -15,20 +15,36 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  //   widget._firebaseAuth.authStateChanges().listen(
+  //     (user) {
+  //       if (user == null) {
+  //         Navigator.of(context)
+  //             .pushNamedAndRemoveUntil(LoginRouter.router, (route) => false);
+  //       } else {
+  //         Navigator.of(context)
+  //             .pushNamedAndRemoveUntil(HomeRouter.router, (route) => false);
+  //       }
+  //     },
+  //   );
+  // }
+
   @override
   void initState() {
     super.initState();
-    widget._firebaseAuth.authStateChanges().listen(
-      (user) {
-        if (user == null) {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil(LoginRouter.router, (route) => false);
-        } else {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil(HomeRouter.router, (route) => false);
-        }
-      },
-    );
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (widget._firebaseAuth.currentUser == null) {
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil(LoginRouter.router, (route) => false);
+      } else {
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil(HomeRouter.router, (route) => false);
+      }
+    });
   }
 
   @override

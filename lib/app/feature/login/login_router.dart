@@ -20,6 +20,7 @@ class LoginRouter extends FlutterGetItPageRoute {
     return (context) {
       return LoginPage(
         controller: context.get(),
+        firebaseAuth: context.get(),
       );
     };
   }
