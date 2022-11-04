@@ -1,6 +1,6 @@
 enum ProjectStatus {
   emAndamento(label: 'Em Andamento'),
-  finalizado(label: 'FinalizSado');
+  finalizado(label: 'Finalizado');
 
   const ProjectStatus({required this.label});
   final String label;
