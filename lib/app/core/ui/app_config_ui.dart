@@ -20,6 +20,12 @@ class AppConfigUi {
     primarySwatch: _primarySwatch,
     primaryColor: const Color(0XFF0066B0),
     primaryColorLight: const Color(0XFF219FFF),
+    // appBarTheme: const AppBarTheme(
+    //   systemOverlayStyle: SystemUiOverlayStyle(
+    //     statusBarColor: Color(0XFF0066B0),
+    //     statusBarBrightness: Brightness.dark,
+    //   ),
+    // ),
     inputDecorationTheme: const InputDecorationTheme(
       border: OutlineInputBorder(),
       enabledBorder: OutlineInputBorder(
