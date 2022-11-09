@@ -1,4 +1,5 @@
 import 'package:asuka/asuka.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:job_timer/app/core/ui/app_config_ui.dart';
 import 'package:job_timer/app/feature/home/home_router.dart';
@@ -12,8 +13,12 @@ class JobTimerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: Asuka.builder,
+      builder: DevicePreview.appBuilder,
+
+      //  Asuka.builder,
       navigatorObservers: [Asuka.asukaHeroController],
+      locale: DevicePreview.locale(context),
+
       title: 'Job Timer',
       theme: AppConfigUi.theme,
       initialRoute: SplashRouter.router,
