@@ -10,9 +10,8 @@ class LoginPage extends StatefulWidget {
   const LoginPage({
     required this.controller,
     required FirebaseAuth firebaseAuth,
-    Key? key,
-  })  : _firebaseAuth = firebaseAuth,
-        super(key: key);
+    super.key,
+  }) : _firebaseAuth = firebaseAuth;
 
   final LoginController controller;
   final FirebaseAuth _firebaseAuth;

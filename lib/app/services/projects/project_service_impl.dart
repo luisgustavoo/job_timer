@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:job_timer/app/entities/project.dart';
+import 'package:job_timer/app/entities/project_status.dart';
+import 'package:job_timer/app/repositories/projects/projects_repository.dart';
 import 'package:job_timer/app/services/projects/project_service.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
-import 'package:job_timer/repositories/projects/projects_repository.dart';
 
 class ProjectServiceImpl implements ProjectService {
   final ProjectsRepository _projectsRepository;
@@ -19,5 +20,11 @@ class ProjectServiceImpl implements ProjectService {
       ..estimatedHours = projectViewModel.estimatedHours;
 
     await _projectsRepository.register(project);
+  }
+
+  @override
+  Future<List<ProjectViewModel>> findByStatus(ProjectStatus status) async {
+    final projects = await _projectsRepository.findByStatus(status);
+    return projects.map(ProjectViewModel.fromEntity).toList();
   }
 }

@@ -15,6 +15,7 @@ void main() async {
   runApp(
     DevicePreview(
       builder: (context) => JobTimerRouter(),
+      // ignore: avoid_redundant_argument_values
       enabled: !kReleaseMode,
     ),
   );

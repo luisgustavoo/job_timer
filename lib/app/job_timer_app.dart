@@ -13,12 +13,18 @@ class JobTimerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: DevicePreview.appBuilder,
-
+      builder: (context, child) {
+        return Builder(
+          builder: (context) {
+            final asuka = Asuka.builder(context, child);
+            return DevicePreview.appBuilder(context, asuka);
+          },
+        );
+      },
+      // DevicePreview.appBuilder,
       //  Asuka.builder,
       navigatorObservers: [Asuka.asukaHeroController],
       locale: DevicePreview.locale(context),
-
       title: 'Job Timer',
       theme: AppConfigUi.theme,
       initialRoute: SplashRouter.router,
