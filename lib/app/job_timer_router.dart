@@ -5,8 +5,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:job_timer/app/core/database/database.dart';
 import 'package:job_timer/app/core/database/database_impl.dart';
 import 'package:job_timer/app/job_timer_app.dart';
+import 'package:job_timer/app/repositories/projects/projects_repository.dart';
+import 'package:job_timer/app/repositories/projects/projects_repository_impl.dart';
 import 'package:job_timer/app/services/auth/auth_service.dart';
 import 'package:job_timer/app/services/auth/auth_service_impl.dart';
+import 'package:job_timer/app/services/projects/project_service.dart';
+import 'package:job_timer/app/services/projects/project_service_impl.dart';
 
 class JobTimerRouter extends FlutterGetItPageRoute {
   @override
@@ -20,6 +24,16 @@ class JobTimerRouter extends FlutterGetItPageRoute {
           ),
         ),
         Bind.lazySingleton<Database>((i) => DatabaseImpl()),
+        Bind.lazySingleton<ProjectsRepository>(
+          (i) => ProjectsRepositoryImpl(
+            database: i(),
+          ),
+        ),
+        Bind.lazySingleton<ProjectService>(
+          (i) => ProjectServiceImpl(
+            projectsRepository: i(),
+          ),
+        ),
       ];
 
   @override

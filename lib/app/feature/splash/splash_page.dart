@@ -5,9 +5,8 @@ import 'package:job_timer/app/feature/home/home_router.dart';
 import 'package:job_timer/app/feature/login/login_router.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({required FirebaseAuth firebaseAuth, Key? key})
-      : _firebaseAuth = firebaseAuth,
-        super(key: key);
+  const SplashPage({required FirebaseAuth firebaseAuth, super.key})
+      : _firebaseAuth = firebaseAuth;
   final FirebaseAuth _firebaseAuth;
 
   @override
