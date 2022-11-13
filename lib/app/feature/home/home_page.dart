@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:job_timer/app/feature/home/controllers/home_controller.dart';
 import 'package:job_timer/app/feature/home/widgets/header_projects_menu.dart';
+import 'package:job_timer/app/feature/home/widgets/project_tile.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class HomePage extends StatelessWidget {
@@ -66,12 +67,7 @@ class HomePage extends StatelessWidget {
                     delegate: SliverChildListDelegate(
                       projects
                           .map(
-                            (p) => ListTile(
-                              title: Text(p.name),
-                              subtitle: Text(
-                                '${p.estimatedHours}h',
-                              ),
-                            ),
+                            (project) => ProjectTile(projectViewModel: project),
                           )
                           .toList(),
                     ),
