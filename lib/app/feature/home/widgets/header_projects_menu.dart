@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:job_timer/app/entities/project_status.dart';
+import 'package:job_timer/app/feature/home/controllers/home_controller.dart';
 import 'package:job_timer/app/feature/project/register/project_register_router.dart';
 
 class HeaderProjectsMenu extends SliverPersistentHeaderDelegate {
+  HeaderProjectsMenu({required this.controller});
+  final HomeController controller;
+  ProjectStatus projectStatus = ProjectStatus.emAndamento;
+
   @override
   Widget build(
     BuildContext context,
@@ -49,6 +54,7 @@ class HeaderProjectsMenu extends SliverPersistentHeaderDelegate {
                     ),
                     // contentPadding: EdgeInsets.zero,
                   ),
+                  value: projectStatus,
                   items: ProjectStatus.values
                       .map(
                         (e) => DropdownMenuItem(
@@ -57,7 +63,12 @@ class HeaderProjectsMenu extends SliverPersistentHeaderDelegate {
                         ),
                       )
                       .toList(),
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    if (value != null) {
+                      projectStatus = value;
+                      controller.filter(projectStatus);
+                    }
+                  },
                 ),
               ),
               const SizedBox(
@@ -67,9 +78,10 @@ class HeaderProjectsMenu extends SliverPersistentHeaderDelegate {
                 child: ElevatedButton.icon(
                   icon: const Icon(Icons.add),
                   label: const Text('Novo Projeto'),
-                  onPressed: () {
-                    Navigator.of(context)
+                  onPressed: () async {
+                    await Navigator.of(context)
                         .pushNamed(ProjectRegisterRouter.router);
+                    await controller.loadProjects();
                   },
                 ),
               )
