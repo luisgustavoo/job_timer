@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:job_timer/app/core/ui/app_config_ui.dart';
 import 'package:job_timer/app/feature/home/home_router.dart';
 import 'package:job_timer/app/feature/login/login_router.dart';
+import 'package:job_timer/app/feature/project/detail/project_detail_router.dart';
 import 'package:job_timer/app/feature/project/register/project_register_router.dart';
 import 'package:job_timer/app/feature/splash/splash_router.dart';
 
@@ -34,6 +35,7 @@ class JobTimerApp extends StatelessWidget {
         HomeRouter.router: (context) => const HomeRouter(),
         ProjectRegisterRouter.router: (context) =>
             const ProjectRegisterRouter(),
+        ProjectDetailRouter.router: (context) => ProjectDetailRouter(),
       },
     );
   }

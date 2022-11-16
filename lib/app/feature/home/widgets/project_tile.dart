@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:job_timer/app/feature/project/detail/project_detail_router.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class ProjectTile extends StatelessWidget {
@@ -8,30 +9,37 @@ class ProjectTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(
-        maxHeight: 90,
+    return InkWell(
+      onTap: () => Navigator.pushNamed(
+        context,
+        ProjectDetailRouter.router,
+        arguments: projectViewModel,
       ),
-      margin: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: Colors.grey[300]!,
-          width: 4,
+      child: Container(
+        constraints: const BoxConstraints(
+          maxHeight: 90,
         ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _ProjectName(
-            projectViewModel: projectViewModel,
-            key: key,
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: Colors.grey[300]!,
+            width: 4,
           ),
-          _ProjectProgress(
-            projectViewModel: projectViewModel,
-            key: key,
-          ),
-        ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _ProjectName(
+              projectViewModel: projectViewModel,
+              key: key,
+            ),
+            _ProjectProgress(
+              projectViewModel: projectViewModel,
+              key: key,
+            ),
+          ],
+        ),
       ),
     );
   }
