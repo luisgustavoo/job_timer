@@ -28,4 +28,26 @@ class HomeController extends Cubit<HomeState> {
       throw Failure();
     }
   }
+
+  Future<void> filter(ProjectStatus projectStatus) async {
+    try {
+      emit(
+        state.copyWith(
+          status: HomeStatus.loading,
+        ),
+      );
+      final projects = await _projectService.findByStatus(projectStatus);
+      emit(
+        state.copyWith(
+          status: HomeStatus.success,
+          projects: projects,
+          projectFilter: projectStatus,
+        ),
+      );
+    } on Exception catch (e, s) {
+      log('Erro ao buscar os projetos', error: e, stackTrace: s);
+      emit(state.copyWith(status: HomeStatus.failure));
+      throw Failure();
+    }
+  }
 }

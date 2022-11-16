@@ -1,6 +1,7 @@
 import 'package:asuka/snackbars/asuka_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:job_timer/app/core/ui/button_with_loader.dart';
 import 'package:job_timer/app/feature/project/register/controllers/project_register_controller.dart';
 import 'package:validatorless/validatorless.dart';
 
@@ -83,20 +84,21 @@ class _ProjectRegisterPageState extends State<ProjectRegisterPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                BlocSelector<ProjectRegisterController, ProjectRegisterStatus,
-                    bool>(
-                  bloc: widget.controller,
-                  selector: (state) => state == ProjectRegisterStatus.loading,
-                  builder: (context, showLoading) {
-                    return Visibility(
-                      visible: showLoading,
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  },
-                ),
-                ElevatedButton(
+                // BlocSelector<ProjectRegisterController, ProjectRegisterStatus,
+                //     bool>(
+                //   bloc: widget.controller,
+                //   selector: (state) => state == ProjectRegisterStatus.loading,
+                //   builder: (context, showLoading) {
+                //     return Visibility(
+                //       visible: showLoading,
+                //       child: const Center(
+                //         child: CircularProgressIndicator(),
+                //       ),
+                //     );
+                //   },
+                // ),
+                ButtonWithLoader<ProjectRegisterController,
+                    ProjectRegisterStatus>(
                   onPressed: () async {
                     final formValid =
                         _formKey.currentState?.validate() ?? false;
@@ -107,15 +109,9 @@ class _ProjectRegisterPageState extends State<ProjectRegisterPage> {
                       await widget.controller.save(projectName, estimatedHours);
                     }
                   },
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      Size(
-                        MediaQuery.of(context).size.width,
-                        50,
-                      ),
-                    ),
-                  ),
-                  child: const Text('Salvar'),
+                  label: 'Salvar',
+                  selector: (state) => state == ProjectRegisterStatus.loading,
+                  bloc: widget.controller,
                 )
               ],
             ),
