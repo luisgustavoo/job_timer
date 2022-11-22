@@ -44,7 +44,7 @@ const ProjectTaskSchema = CollectionSchema(
   getId: _projectTaskGetId,
   getLinks: _projectTaskGetLinks,
   attach: _projectTaskAttach,
-  version: '3.0.2',
+  version: '3.0.5',
 );
 
 int _projectTaskEstimateSize(
