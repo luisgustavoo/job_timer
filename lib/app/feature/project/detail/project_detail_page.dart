@@ -65,7 +65,10 @@ class ProjectDetailPage extends StatelessWidget {
   ) {
     return CustomScrollView(
       slivers: [
-        ProjectDetailAppbar(),
+        ProjectDetailAppbar(
+          context: context,
+          projectViewModel: projectViewModel,
+        ),
         SliverList(
           delegate: SliverChildListDelegate(
             [

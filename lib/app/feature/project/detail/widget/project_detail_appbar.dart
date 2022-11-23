@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:job_timer/app/entities/project_status.dart';
+import 'package:job_timer/app/feature/project/task/project_task_router.dart';
+import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class ProjectDetailAppbar extends SliverAppBar {
-  ProjectDetailAppbar({super.key})
-      : super(
+  ProjectDetailAppbar({
+    required ProjectViewModel projectViewModel,
+    required BuildContext context,
+    super.key,
+  }) : super(
           expandedHeight: 100,
           pinned: true,
           toolbarHeight: 100,
-          title: const Text('Project X'),
+          title: Text(projectViewModel.name),
           centerTitle: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -33,27 +39,38 @@ class ProjectDetailAppbar extends SliverAppBar {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text('10 tasks'),
-                          TextButton.icon(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.add_circle_rounded,
-                              size: 30,
-                            ),
-                            label: Text(
-                              'Adicionar tasks',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
+                          Text('${projectViewModel.tasks.length} tasks'),
+                          Visibility(
+                            visible: projectViewModel.status ==
+                                ProjectStatus.emAndamento,
+                            child: TextButton.icon(
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  ProjectTaskRouter.router,
+                                  arguments: projectViewModel,
+                                );
+                              },
+                              icon: const Icon(
+                                Icons.add_circle_rounded,
+                                size: 30,
                               ),
-                            ),
-                            style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                EdgeInsets.zero,
+                              label: const Text(
+                                'Adicionar tasks',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.white,
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all<EdgeInsets>(
+                                  EdgeInsets.zero,
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  Colors.white,
+                                ),
                               ),
                             ),
                           )
