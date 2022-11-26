@@ -3,8 +3,10 @@ part of 'project_task_controller.dart';
 enum ProjectTaskStatus { intial, loading, success, failure }
 
 class ProjectTaskState extends Equatable {
-  const ProjectTaskState._(
-      {required this.projectViewModel, required this.status});
+  const ProjectTaskState._({
+    required this.projectViewModel,
+    required this.status,
+  });
 
   const ProjectTaskState.initial({required ProjectViewModel projectViewModel})
       : this._(

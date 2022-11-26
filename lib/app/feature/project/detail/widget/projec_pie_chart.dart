@@ -38,7 +38,6 @@ class ProjecPieChart extends StatelessWidget {
             ),
           ),
           Align(
-            alignment: Alignment.center,
             child: Text(
               '200h',
               style: TextStyle(

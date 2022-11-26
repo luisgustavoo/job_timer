@@ -77,6 +77,7 @@ ProjectTask _projectTaskDeserialize(
   final object = ProjectTask();
   object.created = reader.readDateTime(offsets[0]);
   object.duration = reader.readLong(offsets[1]);
+  object.id = id;
   object.name = reader.readString(offsets[2]);
   return object;
 }
@@ -108,7 +109,9 @@ List<IsarLinkBase<dynamic>> _projectTaskGetLinks(ProjectTask object) {
 }
 
 void _projectTaskAttach(
-    IsarCollection<dynamic> col, Id id, ProjectTask object) {}
+    IsarCollection<dynamic> col, Id id, ProjectTask object) {
+  object.id = id;
+}
 
 extension ProjectTaskQueryWhereSort
     on QueryBuilder<ProjectTask, ProjectTask, QWhere> {

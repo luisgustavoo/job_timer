@@ -8,7 +8,6 @@ import 'package:job_timer/app/feature/project/detail/project_detail_router.dart'
 import 'package:job_timer/app/feature/project/register/project_register_router.dart';
 import 'package:job_timer/app/feature/project/task/project_task_router.dart';
 import 'package:job_timer/app/feature/splash/splash_router.dart';
-import 'package:job_timer/app/view_models/project_task_view_model.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class JobTimerApp extends StatelessWidget {

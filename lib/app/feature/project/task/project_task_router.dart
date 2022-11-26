@@ -1,4 +1,4 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:job_timer/app/feature/project/task/controller/project_task_controller.dart';
 import 'package:job_timer/app/feature/project/task/project_task_page.dart';
@@ -13,7 +13,10 @@ class ProjectTaskRouter extends FlutterGetItPageRoute {
   @override
   List<Bind<Object>> get bindings => [
         Bind.lazySingleton(
-          (i) => ProjectTaskController(projectViewModel: projectViewModel),
+          (i) => ProjectTaskController(
+            projectViewModel: projectViewModel,
+            projectService: i(),
+          ),
         ),
       ];
 
