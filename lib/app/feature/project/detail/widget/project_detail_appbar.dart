@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 import 'package:job_timer/app/entities/project_status.dart';
+import 'package:job_timer/app/feature/project/detail/controller/project_detail_controller.dart';
 import 'package:job_timer/app/feature/project/task/project_task_router.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 
@@ -44,12 +46,17 @@ class ProjectDetailAppbar extends SliverAppBar {
                             visible: projectViewModel.status ==
                                 ProjectStatus.emAndamento,
                             child: TextButton.icon(
-                              onPressed: () {
-                                Navigator.pushNamed(
+                              onPressed: () async {
+                                final controller =
+                                    context.get<ProjectDetailController>();
+
+                                await Navigator.pushNamed(
                                   context,
                                   ProjectTaskRouter.router,
                                   arguments: projectViewModel,
                                 );
+
+                                await controller.updateProject();
                               },
                               icon: const Icon(
                                 Icons.add_circle_rounded,

@@ -12,7 +12,10 @@ class ProjectDetailRouter extends FlutterGetItPageRoute {
   @override
   List<Bind<Object>> get bindings => [
         Bind.lazySingleton(
-          (i) => ProjectDetailController(projectViewModel: projectViewModel),
+          (i) => ProjectDetailController(
+            projectViewModel: projectViewModel,
+            projectService: i(),
+          ),
         ),
       ];
 
