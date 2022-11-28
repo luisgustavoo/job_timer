@@ -13,4 +13,6 @@ abstract class ProjectService {
   );
 
   Future<ProjectViewModel> findById(int id);
+
+  Future<void> finishProject(ProjectViewModel projectViewModel);
 }

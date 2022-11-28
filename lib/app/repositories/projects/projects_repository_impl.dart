@@ -54,7 +54,7 @@ class ProjectsRepositoryImpl implements ProjectsRepository {
       final project = await findById(projectId);
 
       final taskId = await connection.writeTxn<int>(
-        () async {
+        () {
           return connection.projectTasks.put(task);
         },
       );
@@ -100,5 +100,22 @@ class ProjectsRepositoryImpl implements ProjectsRepository {
       throw Failure(message: 'Projecto não existe');
     }
     return task;
+  }
+
+  @override
+  Future<void> finishProject(Project project) async {
+    try {
+      final connection = await _database.openConnection();
+
+      await connection.writeTxn<int>(
+        () {
+          return connection.projects.put(project);
+        },
+      );
+      // ignore: avoid_catching_errors
+    } on IsarError catch (e, s) {
+      log('Erro ao finalizar projeto', error: e, stackTrace: s);
+      throw Failure();
+    }
   }
 }

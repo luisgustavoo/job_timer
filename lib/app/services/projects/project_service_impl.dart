@@ -47,4 +47,15 @@ class ProjectServiceImpl implements ProjectService {
     final project = await _projectsRepository.findById(id);
     return ProjectViewModel.fromEntity(project);
   }
+
+  @override
+  Future<void> finishProject(ProjectViewModel projectViewModel) async {
+    final project = Project()
+      ..id = projectViewModel.id
+      ..name = projectViewModel.name
+      ..estimatedHours = projectViewModel.estimatedHours
+      ..status = ProjectStatus.finalizado;
+
+    await _projectsRepository.finishProject(project);
+  }
 }

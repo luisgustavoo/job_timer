@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:job_timer/app/feature/home/controllers/home_controller.dart';
 import 'package:job_timer/app/feature/home/widgets/header_projects_menu.dart';
 import 'package:job_timer/app/feature/home/widgets/project_tile.dart';
+import 'package:job_timer/app/feature/project/detail/project_detail_router.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class HomePage extends StatelessWidget {
@@ -67,7 +68,18 @@ class HomePage extends StatelessWidget {
                     delegate: SliverChildListDelegate(
                       projects
                           .map(
-                            (project) => ProjectTile(projectViewModel: project),
+                            (project) => ProjectTile(
+                              projectViewModel: project,
+                              onTap: () async {
+                                await Navigator.pushNamed(
+                                  context,
+                                  ProjectDetailRouter.router,
+                                  arguments: project,
+                                ) as bool?;
+
+                                await controller.loadProjects();
+                              },
+                            ),
                           )
                           .toList(),
                     ),
