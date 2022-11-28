@@ -5,6 +5,7 @@ import 'package:job_timer/app/feature/home/controllers/home_controller.dart';
 import 'package:job_timer/app/feature/home/widgets/header_projects_menu.dart';
 import 'package:job_timer/app/feature/home/widgets/project_tile.dart';
 import 'package:job_timer/app/feature/project/detail/project_detail_router.dart';
+import 'package:job_timer/app/feature/splash/splash_router.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,10 +22,23 @@ class HomePage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        drawer: const Drawer(
+        drawer: Drawer(
           child: SafeArea(
             child: ListTile(
-              title: Text('Sair'),
+              title: const Text('Sair'),
+              onTap: () async {
+                // final navigator = Navigator.of(context);
+
+                final navigator = Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  SplashRouter.router,
+                  (route) => true,
+                );
+
+                await controller.signOut();
+
+                await navigator;
+              },
             ),
           ),
         ),

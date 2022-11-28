@@ -13,6 +13,7 @@ class HomeRouter extends FlutterGetItPageRoute {
         Bind.lazySingleton<HomeController>(
           (i) => HomeController(
             projectService: i(),
+            authService: i(),
           ),
         ),
       ];
