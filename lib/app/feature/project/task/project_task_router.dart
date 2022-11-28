@@ -1,18 +1,19 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
-import 'package:job_timer/app/feature/project/detail/controller/project_detail_controller.dart';
-import 'package:job_timer/app/feature/project/detail/project_detail_page.dart';
+import 'package:job_timer/app/feature/project/task/controller/project_task_controller.dart';
+import 'package:job_timer/app/feature/project/task/project_task_page.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 
-class ProjectDetailRouter extends FlutterGetItPageRoute {
-  const ProjectDetailRouter({required this.projectViewModel});
-  static const router = '/project/detail';
+class ProjectTaskRouter extends FlutterGetItPageRoute {
+  const ProjectTaskRouter({required this.projectViewModel});
+
+  static const router = '/project/task';
   final ProjectViewModel projectViewModel;
 
   @override
   List<Bind<Object>> get bindings => [
         Bind.lazySingleton(
-          (i) => ProjectDetailController(
+          (i) => ProjectTaskController(
             projectViewModel: projectViewModel,
             projectService: i(),
           ),
@@ -22,7 +23,7 @@ class ProjectDetailRouter extends FlutterGetItPageRoute {
   @override
   WidgetBuilder get page {
     return (context) {
-      return ProjectDetailPage(
+      return ProjectTaskPage(
         controller: context.get(),
       );
     };

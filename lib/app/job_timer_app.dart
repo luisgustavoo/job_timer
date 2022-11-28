@@ -6,7 +6,9 @@ import 'package:job_timer/app/feature/home/home_router.dart';
 import 'package:job_timer/app/feature/login/login_router.dart';
 import 'package:job_timer/app/feature/project/detail/project_detail_router.dart';
 import 'package:job_timer/app/feature/project/register/project_register_router.dart';
+import 'package:job_timer/app/feature/project/task/project_task_router.dart';
 import 'package:job_timer/app/feature/splash/splash_router.dart';
+import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class JobTimerApp extends StatelessWidget {
   const JobTimerApp({Key? key}) : super(key: key);
@@ -35,7 +37,21 @@ class JobTimerApp extends StatelessWidget {
         HomeRouter.router: (context) => const HomeRouter(),
         ProjectRegisterRouter.router: (context) =>
             const ProjectRegisterRouter(),
-        ProjectDetailRouter.router: (context) => ProjectDetailRouter(),
+        ProjectDetailRouter.router: (context) {
+          final projectViewModel =
+              ModalRoute.of(context)!.settings.arguments! as ProjectViewModel;
+
+          return ProjectDetailRouter(
+            projectViewModel: projectViewModel,
+          );
+        },
+        ProjectTaskRouter.router: (context) {
+          final projectViewModel =
+              ModalRoute.of(context)!.settings.arguments! as ProjectViewModel;
+          return ProjectTaskRouter(
+            projectViewModel: projectViewModel,
+          );
+        }
       },
     );
   }

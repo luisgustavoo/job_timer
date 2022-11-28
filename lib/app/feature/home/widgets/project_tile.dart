@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:job_timer/app/feature/project/detail/project_detail_router.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class ProjectTile extends StatelessWidget {
-  const ProjectTile({required this.projectViewModel, super.key});
+  const ProjectTile({
+    required this.projectViewModel,
+    required this.onTap,
+    super.key,
+  });
   final ProjectViewModel projectViewModel;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.pushNamed(
-        context,
-        ProjectDetailRouter.router,
-        arguments: projectViewModel,
-      ),
+      onTap: onTap,
       child: Container(
         constraints: const BoxConstraints(
           maxHeight: 90,
