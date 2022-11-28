@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "6119895462-18smpbh2detvfle7hpnd8pu1ki92r50n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.dev.luisgustavo.job_timer",
+            "certificate_hash": "46315835f1b7f64329d4c0835af39d938b25ba81"
+          }
+        },
+        {
           "client_id": "6119895462-ao0r0cg22l9bifpuqigm7jjfkq5r8hle.apps.googleusercontent.com",
           "client_type": 3
         }
