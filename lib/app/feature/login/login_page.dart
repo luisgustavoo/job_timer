@@ -1,5 +1,4 @@
 import 'package:asuka/asuka.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,12 +8,11 @@ import 'package:job_timer/app/feature/login/controllers/login_controller.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({
     required this.controller,
-    required FirebaseAuth firebaseAuth,
     super.key,
-  }) : _firebaseAuth = firebaseAuth;
+  });
 
   final LoginController controller;
-  final FirebaseAuth _firebaseAuth;
+  // final FirebaseAuth _firebaseAuth;
 
   @override
   State<LoginPage> createState() => _LoginPageState();

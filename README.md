@@ -1,16 +1,19 @@
-# job_timer
+<p  align="center"> <img align="center" src="/assets/images/logo.svg"/></p>
 
-A new Flutter project.
+<h1 align="center">Job Timer</h1>
 
-## Getting Started
+<p align="center">Aplicativo para registar horas de trabalhos </p>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<div class="row">
+  <img align="center" src="assets/screenshots/tela_login.png" width="200" height="400" />
+  <img align="center" src="assets/screenshots/tela_home.png" width="200" height="400" />
+  <img align="center" src="assets/screenshots/tela_detalhe_do_projeto.png" width="200" height="400" />
+  <img align="center" src="assets/screenshots/tela_criar_nova_tarefa.png" width="200" height="400" />
+  <img align="center" src="assets/screenshots/tela_criar_novo_projeto.png" width="200" height="400" />  
+</div>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+

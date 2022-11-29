@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:job_timer/app/core/errors/google_user_not_found.dart';
 import 'package:job_timer/app/services/auth/auth_service.dart';
@@ -30,7 +33,11 @@ class AuthServiceImpl implements AuthService {
 
   @override
   Future<void> signOut() async {
-    await _firebaseAuth.signOut();
-    await _googleSigIn.disconnect();
+    try {
+      await _firebaseAuth.signOut();
+      await _googleSigIn.disconnect();
+    } on PlatformException catch (e, s) {
+      log('Erro ao fazer signOut', error: e, stackTrace: s);
+    }
   }
 }
