@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
                   (route) => true,
                 );
 
-                // await controller.signOut();
+                await controller.signOut();
 
                 // await navigator.pushNamedAndRemoveUntil(
                 //   SplashRouter.router,

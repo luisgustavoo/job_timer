@@ -9,9 +9,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // await FirebaseAuth.instance.signOut();
-  // await GoogleSignIn().disconnect();
-
   runApp(
     DevicePreview(
       builder: (context) => JobTimerRouter(),

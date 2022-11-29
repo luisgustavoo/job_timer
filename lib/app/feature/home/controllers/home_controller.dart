@@ -2,9 +2,10 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:job_timer/app/auth/auth/auth_service.dart';
+
 import 'package:job_timer/app/core/errors/failure.dart';
 import 'package:job_timer/app/entities/project_status.dart';
+import 'package:job_timer/app/services/auth/auth_service.dart';
 import 'package:job_timer/app/services/projects/project_service.dart';
 import 'package:job_timer/app/view_models/project_view_model.dart';
 

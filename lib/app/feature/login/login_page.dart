@@ -21,19 +21,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    widget._firebaseAuth.authStateChanges().listen(
-      (user) {
-        if (user != null) {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil(HomeRouter.router, (route) => false);
-        }
-      },
-    );
-  }
+  //   widget._firebaseAuth.authStateChanges().listen(
+  //     (user) {
+  //       if (user != null) {
+  //         Navigator.of(context)
+  //             .pushNamedAndRemoveUntil(HomeRouter.router, (route) => false);
+  //       }
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +47,11 @@ class _LoginPageState extends State<LoginPage> {
 
         if (state.status == LoginStatus.failure) {
           AsukaSnackbar.alert(errorMessage).show();
+        }
+
+        if (state.logged) {
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil(HomeRouter.router, (route) => false);
         }
       },
       child: Scaffold(

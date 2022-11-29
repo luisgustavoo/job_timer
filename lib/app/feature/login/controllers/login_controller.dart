@@ -18,6 +18,7 @@ class LoginController extends Cubit<LoginState> {
     try {
       emit(state.copyWith(status: LoginStatus.loading));
       await _authService.signIn();
+      emit(state.copyWith(logged: true));
     } on GoogleUserNotFound catch (e, s) {
       log('${e.errorMessage}', error: e, stackTrace: s);
       emit(
