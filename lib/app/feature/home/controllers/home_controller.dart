@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:job_timer/app/auth/auth/auth_service.dart';
 import 'package:job_timer/app/core/errors/failure.dart';
 import 'package:job_timer/app/entities/project_status.dart';
 import 'package:job_timer/app/services/projects/project_service.dart';
@@ -12,10 +13,13 @@ part 'home_state.dart';
 class HomeController extends Cubit<HomeState> {
   HomeController({
     required ProjectService projectService,
+    required AuthService authService,
   })  : _projectService = projectService,
+        _authService = authService,
         super(HomeState.initial());
 
   final ProjectService _projectService;
+  final AuthService _authService;
 
   Future<void> loadProjects() async {
     try {
@@ -49,5 +53,9 @@ class HomeController extends Cubit<HomeState> {
       emit(state.copyWith(status: HomeStatus.failure));
       throw Failure();
     }
+  }
+
+  Future<void> signOut() async {
+    await _authService.signOut();
   }
 }
