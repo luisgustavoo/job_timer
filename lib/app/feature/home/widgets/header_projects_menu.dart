@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:job_timer/app/entities/project_status.dart';
 import 'package:job_timer/app/feature/home/controllers/home_controller.dart';
 import 'package:job_timer/app/feature/project/register/project_register_router.dart';
@@ -79,8 +80,7 @@ class HeaderProjectsMenu extends SliverPersistentHeaderDelegate {
                   icon: const Icon(Icons.add),
                   label: const Text('Novo Projeto'),
                   onPressed: () async {
-                    await Navigator.of(context)
-                        .pushNamed(ProjectRegisterRouter.router);
+                    context.goNamed(ProjectRegisterRouter.router);
                     await controller.loadProjects();
                   },
                 ),

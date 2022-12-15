@@ -1,6 +1,7 @@
 import 'package:asuka/snackbars/asuka_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:job_timer/app/core/ui/button_with_loader.dart';
 import 'package:job_timer/app/feature/project/register/controllers/project_register_controller.dart';
 import 'package:validatorless/validatorless.dart';
@@ -32,7 +33,7 @@ class _ProjectRegisterPageState extends State<ProjectRegisterPage> {
       listener: (context, state) {
         switch (state) {
           case ProjectRegisterStatus.success:
-            Navigator.pop(context);
+            context.pop();
             break;
           case ProjectRegisterStatus.failure:
             AsukaSnackbar.alert('Erro ao salvar projeto');

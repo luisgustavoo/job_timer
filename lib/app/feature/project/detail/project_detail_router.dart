@@ -6,7 +6,7 @@ import 'package:job_timer/app/view_models/project_view_model.dart';
 
 class ProjectDetailRouter extends FlutterGetItPageRoute {
   const ProjectDetailRouter({required this.projectViewModel});
-  static const router = '/project/detail';
+  static const router = 'project/detail';
   final ProjectViewModel projectViewModel;
 
   @override

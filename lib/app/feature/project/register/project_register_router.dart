@@ -5,7 +5,7 @@ import 'package:job_timer/app/feature/project/register/project_register_page.dar
 
 class ProjectRegisterRouter extends FlutterGetItPageRoute {
   const ProjectRegisterRouter({super.key});
-  static const String router = '/project/register';
+  static const String router = 'project/register';
 
   @override
   List<Bind<Object>> get bindings => [

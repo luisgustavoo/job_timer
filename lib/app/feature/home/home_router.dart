@@ -6,7 +6,7 @@ import 'package:job_timer/app/feature/home/home_page.dart';
 class HomeRouter extends FlutterGetItPageRoute {
   const HomeRouter({super.key});
 
-  static const String router = '/home';
+  static const String router = 'home';
 
   @override
   List<Bind<Object>> get bindings => [

@@ -2,6 +2,7 @@ import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:job_timer/app/entities/project_status.dart';
 import 'package:job_timer/app/feature/project/detail/controller/project_detail_controller.dart';
 import 'package:job_timer/app/feature/project/detail/widget/projec_pie_chart.dart';
@@ -81,11 +82,7 @@ class ProjectDetailPage extends StatelessWidget {
         ProjectDetailAppbar(
           projectViewModel: projectViewModel,
           onPressed: () async {
-            await Navigator.pushNamed(
-              context,
-              ProjectTaskRouter.router,
-              arguments: projectViewModel,
-            );
+            context.goNamed(ProjectTaskRouter.router, extra: projectViewModel);
 
             await controller.updateProject();
           },
