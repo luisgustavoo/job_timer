@@ -7,7 +7,7 @@ import 'package:job_timer/app/view_models/project_view_model.dart';
 class ProjectTaskRouter extends FlutterGetItPageRoute {
   const ProjectTaskRouter({required this.projectViewModel});
 
-  static const router = '/project/task';
+  static const router = 'project/task';
   final ProjectViewModel projectViewModel;
 
   @override

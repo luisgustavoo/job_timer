@@ -6,7 +6,7 @@ import 'package:job_timer/app/feature/login/login_page.dart';
 class LoginRouter extends FlutterGetItPageRoute {
   const LoginRouter({super.key});
 
-  static const String router = '/login';
+  static const String router = 'login';
 
   @override
   List<Bind<Object>> get bindings {

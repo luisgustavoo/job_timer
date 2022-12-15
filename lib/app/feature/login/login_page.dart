@@ -2,6 +2,7 @@ import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:job_timer/app/feature/home/home_router.dart';
 import 'package:job_timer/app/feature/login/controllers/login_controller.dart';
 
@@ -48,8 +49,7 @@ class _LoginPageState extends State<LoginPage> {
         }
 
         if (state.logged) {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil(HomeRouter.router, (route) => false);
+          context.goNamed(HomeRouter.router);
         }
       },
       child: Scaffold(

@@ -1,6 +1,7 @@
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:job_timer/app/core/ui/button_with_loader.dart';
 import 'package:job_timer/app/feature/project/task/controller/project_task_controller.dart';
 import 'package:validatorless/validatorless.dart';
@@ -34,7 +35,7 @@ class _ProjectTaskPageState extends State<ProjectTaskPage> {
         if (state.status == ProjectTaskStatus.failure) {
           AsukaSnackbar.alert('Erro ao cadastrar task').show();
         } else if (state.status == ProjectTaskStatus.success) {
-          Navigator.pop(context);
+          context.pop();
         }
       },
       child: Scaffold(
